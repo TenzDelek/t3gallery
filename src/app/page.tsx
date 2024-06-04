@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { db } from "~/server/db";
-
+export const dynamic= "force-dynamic" //make changes when dynamic added(if not added it doesnt show in ui)
 //made using uploadthing( easy, just create a new and upload your pic)
 const mockdata=[
   "https://utfs.io/f/0af21d12-8de3-48fe-bbfd-179d6241251b-1d.png",
