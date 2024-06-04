@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { db } from "~/server/db";
 
 //made using uploadthing( easy, just create a new and upload your pic)
 const mockdata=[
@@ -10,12 +11,17 @@ const mockimages=mockdata.map((url,index)=>({
   id:index+1,
   url
 }))
-export default function HomePage() {
+export default async function HomePage() {
+  const post=await db.query.posts.findMany();
+  console.log(post)
   return (
     <main>
       <div className=" flex flex-wrap gap-4">
-        {[...mockimages,...mockimages,...mockimages,...mockimages,].map((image)=>(
-          <div className=" w-48" key={image.id}>
+       {post.map((datas)=>(
+        <div key={datas.id}>{datas.name}</div>
+       ))}
+        {[...mockimages,...mockimages,...mockimages,...mockimages,].map((image,index)=>(
+          <div className=" w-48" key={image.id +"-"+ index}>
             <img src={image.url} />
           </div>
         ))}
