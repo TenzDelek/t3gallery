@@ -16,6 +16,8 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
+//usefull here we take only table where starting is t3gallery
+//as in vercel only 1 db can be created for free
 export const createTable = pgTableCreator((name) => `t3gallery_${name}`);
 
 export const posts = createTable(
