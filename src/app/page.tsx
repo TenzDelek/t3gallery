@@ -1,4 +1,5 @@
 
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { db } from "~/server/db";
 export const dynamic= "force-dynamic" //make changes when dynamic added(if not added it doesnt show in ui)
 //made using uploadthing( easy, just create a new and upload your pic)
@@ -12,14 +13,12 @@ export const dynamic= "force-dynamic" //make changes when dynamic added(if not a
 //   id:index+1,
 //   url
 // }))
-export default async function HomePage() {
+ async function Imagess(){
   const images=await db.query.images.findMany({
     orderBy:(model,{desc})=>desc(model.id)
   });
-  // console.log(post)
-  return (
-    <main>
-      <div className=" flex flex-wrap gap-4">
+  return(
+<div className=" flex flex-wrap gap-4">
        {/* {post.map((datas)=>(
         <div key={datas.id}>{datas.name}</div>
        ))} */}
@@ -31,7 +30,22 @@ export default async function HomePage() {
         ))}
 
       </div>
-    tenzin delek trying
+  )
+}
+export default async function HomePage() {
+ 
+  // console.log(post)
+  return (
+    <main>
+      <SignedOut>
+        <div className=" w-full text-center justify-center items-center ">
+          <p>bro lock in !!</p>
+        </div>
+      </SignedOut>
+        <SignedIn>
+          <Imagess/>
+        </SignedIn>
+ 
     </main>
   );
 }
