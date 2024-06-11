@@ -22,8 +22,8 @@ export const dynamic= "force-dynamic" //make changes when dynamic added(if not a
        {/* {post.map((datas)=>(
         <div key={datas.id}>{datas.name}</div>
        ))} */}
-        {[...images,...images,...images,...images,].map((image,index)=>(
-          <div className=" w-48 flex flex-col"  key={image.id +"-"+ index}>
+        {images.map((image,index)=>(
+          <div className=" w-48 flex flex-col"  key={image.id}>
             <img src={image.url} />
             <div>{image.name}</div>
           </div>
