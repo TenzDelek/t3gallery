@@ -1,6 +1,7 @@
 
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { db } from "~/server/db";
+import { getImages } from "~/server/queries";
 export const dynamic= "force-dynamic" //make changes when dynamic added(if not added it doesnt show in ui)
 //made using uploadthing( easy, just create a new and upload your pic)
 //now every changes are reflected back
@@ -14,9 +15,7 @@ export const dynamic= "force-dynamic" //make changes when dynamic added(if not a
 //   url
 // }))
  async function Imagess(){
-  const images=await db.query.images.findMany({
-    orderBy:(model,{desc})=>desc(model.id)
-  });
+ const images=await getImages()
   return(
 <div className=" flex flex-wrap gap-4">
        {/* {post.map((datas)=>(
