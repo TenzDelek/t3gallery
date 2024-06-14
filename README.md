@@ -9,8 +9,8 @@
 - [x] Attach database to UI
 - [x] Add authentication (w/ clerk)
 - [x] Add image upload
-- [ ] "taint" (server-only)
-- [ ] Use Next/Image component
+- [x] "taint" (server-only)
+- [x] Use Next/Image component
 - [ ] Error management (w/ Sentry)
 - [ ] Routing/image page (parallel route)
 - [ ] Update upload button to be less cringe
@@ -25,8 +25,12 @@
 - "infinite scroll"
 - Folders/albums
 
+- delek note
 ## working with clerk for auth
 1. first set up your middleware.ts (take from the docs)
 2. generate the keys (go to the dashboard and create your application)
 3. in layout page wrap the provider 
 4. use the signedout and signedin div to (in nav)
+
+## why we use next Image
+- it help us to signifies optimization for next js

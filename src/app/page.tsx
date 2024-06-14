@@ -1,4 +1,4 @@
-
+import Image from 'next/image'
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { db } from "~/server/db";
 import { getImages } from "~/server/queries";
@@ -17,13 +17,13 @@ export const dynamic= "force-dynamic" //make changes when dynamic added(if not a
  async function Imagess(){
  const images=await getImages()
   return(
-<div className=" flex flex-wrap gap-4">
+<div className=" flex justify-center flex-wrap gap-4">
        {/* {post.map((datas)=>(
         <div key={datas.id}>{datas.name}</div>
        ))} */}
         {images.map((image,index)=>(
-          <div className=" w-48 flex flex-col"  key={image.id}>
-            <img src={image.url} />
+          <div className=" w-48 h-48 flex flex-col"  key={image.id}>
+            <Image src={image.url} width={192} height={192} alt={image.name} style={{objectFit:"contain"}} />
             <div>{image.name}</div>
           </div>
         ))}
