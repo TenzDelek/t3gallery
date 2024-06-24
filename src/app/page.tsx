@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import { db } from "~/server/db";
 import { getImages } from "~/server/queries";
+import Link from 'next/link';
 export const dynamic= "force-dynamic" //make changes when dynamic added(if not added it doesnt show in ui)
 //made using uploadthing( easy, just create a new and upload your pic)
 //now every changes are reflected back
@@ -23,7 +24,9 @@ export const dynamic= "force-dynamic" //make changes when dynamic added(if not a
        ))} */}
         {images.map((image,index)=>(
           <div className=" w-48 h-48 flex flex-col"  key={image.id}>
+            <Link href={`img/${image.id}`} >
             <Image src={image.url} width={192} height={192} alt={image.name} style={{objectFit:"contain"}} />
+            </Link>
             <div>{image.name}</div>
           </div>
         ))}
